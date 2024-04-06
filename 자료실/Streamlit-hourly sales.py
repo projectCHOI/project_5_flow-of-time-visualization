@@ -1,3 +1,5 @@
+# pip 설치
+# pip install seaborn
 import streamlit as st
 import pandas as pd
 import seaborn as sns
@@ -7,7 +9,7 @@ import matplotlib.pyplot as plt
 file_path = r'C:\Users\HOME\Desktop\새싹_교육\GitHub_CHOI\project_5_flow-of-time-visualization\자료실\hourly sales.csv'
 
 # Streamlit을 사용하여 데이터 불러오기
-@st.cache  # 데이터 캐싱
+@st.cache_data  # 데이터 캐싱을 위한 새로운 메소드 사용
 def load_data(path):
     data = pd.read_csv(path)
     return data
