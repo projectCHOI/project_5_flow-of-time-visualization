@@ -1,1 +1,5 @@
 매출액 자료를 바탕으로 다양한 시각화 수행
+
+@ Streamlit-hourly sales
+# 실행 코드
+# streamlit run "c:/Users/HOME/Desktop/새싹_교육/GitHub_CHOI/project_5_flow-of-time-visualization/자료실/Streamlit-hourly sales.PY"
