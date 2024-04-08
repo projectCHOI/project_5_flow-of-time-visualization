@@ -1,13 +1,16 @@
-매출액 자료를 바탕으로 다양한 시각화 수행
+@ 매출액 자료를 바탕으로 다양한 시각화 수행
 
 @ 분석의 포인트
 1. 기술 통계(Descriptive Statistics)
+-평균, 중앙값, 최소값, 최대값, 표준편차 등을 계산하여 데이터의 중심 경향성과 분산을 파악
+-분포의 왜도와 첨도를 통해 데이터의 분포 형태를 이해
 
-2. 상관분석(Correlation Analysis)
+2. 시계열 분석(Time Series Analysis)
+-시간에 따른 데이터의 변화 패턴, 추세, 계절성을 분석
+-과거 데이터를 바탕으로 미래를 예측
 
-3. 시계열 분석(Time Series Analysis)
-
-4. 가설 검정(Hypothesis Testing)
+3. 가설 검정(Hypothesis Testing)
+-특정 가설을 설정하고 데이터를 사용하여 이 가설을 지지하거나 반박할 수 있는 증거 탐색.
 
 
 @ Streamlit-hourly sales
