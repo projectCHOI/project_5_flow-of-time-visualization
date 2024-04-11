@@ -20,9 +20,21 @@ data = load_data(file_path)
 # Streamlit에 데이터 표시
 st.write(data)
 
-# 그래프 그리기 준비
-sales_data = data[['TIME', 'SALES1', 'SALES2', 'SALES3', 'SALES4', 'SALES5', 'SALES6', 'SALES7']]
-sales_data = sales_data.set_index('TIME')
+# # 그래프 그리기 준비
+# sales_data = data[['TIME', 'SALES1', 'SALES2', 'SALES3', 'SALES4', 'SALES5', 'SALES6', 'SALES7']]
+# sales_data = sales_data.set_index('TIME')
+
+# 'SUM' 열이 없다면 생성 (예시: 모든 SALES 열의 합계)
+if 'SUM' not in data.columns:
+    data['SUM'] = data[['SALES1', 'SALES2', 'SALES3', 'SALES4', 'SALES5', 'SALES6', 'SALES7']].sum(axis=1)
+
+# 꺾은선 그래프 그리기
+plt.figure(figsize=(10, 6))
+plt.plot(data['TIME'], data['SUM'], label='Total Sales')
+plt.xlabel('Time')
+plt.ylabel('Total Sales')
+plt.title('Hourly Sales Over Time')
+plt.legend()
 
 # 히트맵 생성
 plt.figure(figsize=(10, 8))
