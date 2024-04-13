@@ -18,3 +18,6 @@
 
 @ Streamlit-daily sales
 # streamlit run "c:/Users/HOME/Desktop/새싹_교육/GitHub_CHOI/project_5_flow-of-time-visualization/Streamlit-daily sales.py"
+
+@ streamlit-monthly sales
+# streamlit run "c:/Users/HOME/Desktop/새싹_교육/GitHub_CHOI/project_5_flow-of-time-visualization/streamlit-monthly sales.py"
