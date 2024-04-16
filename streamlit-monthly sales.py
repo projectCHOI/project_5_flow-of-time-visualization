@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # CSV 데이터를 불러오는 함수
-@st.cache
+@st.cache_data
 def load_data():
     path = r'C:\Users\HOME\Desktop\새싹_교육\GitHub_CHOI\project_5_flow-of-time-visualization\자료실\16y17y18y19y_Total daily sales.csv'
     return pd.read_csv(path)
