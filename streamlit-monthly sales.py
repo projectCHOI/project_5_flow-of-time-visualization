@@ -17,14 +17,16 @@ st.write("Daily Sales Data:", df)
 # 그래프를 그리는 함수
 def plot_sales(df):
     plt.figure(figsize=(10, 5))
-    plt.plot(df['TIME'], df['SALES'], marker='o', color='green')  # 기본 꺽은선 그래프는 초록색으로 설정
+    # 전체 선을 초록색으로 표시
+    plt.plot(df['TIME'], df['SALES'], marker='o', color='green')
 
-    # 최고점과 최저점 표시
+    # 최고점을 빨간색 별표로 표시
     max_index = df['SALES'].idxmax()
-    min_index = df['SALES'].idxmin()
-    plt.scatter(df['TIME'][max_index], df['SALES'][max_index], color='red', marker='*')  # 최고점은 빨간색 별표로 표시
-    plt.scatter(df['TIME'][min_index], df['SALES'][min_index], color='blue')  # 최저점은 파란색으로 표시
+    plt.scatter(df['TIME'][max_index], df['SALES'][max_index], color='red', marker='*')
 
+    # 최저점을 파란색으로 표시
+    min_index = df['SALES'].idxmin()
+    plt.scatter(df['TIME'][min_index], df['SALES'][min_index], color='blue')
     plt.title('Daily Sales Data')
     plt.xlabel('Time')
     plt.ylabel('Total Sales')
