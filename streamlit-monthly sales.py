@@ -17,21 +17,23 @@ st.write("Daily Sales Data:", df)
 # 그래프를 그리는 함수
 def plot_sales(df):
     plt.figure(figsize=(10, 5))
-    # 전체 선을 초록색으로 표시
-    plt.plot(df['TIME'], df['SALES'], marker='o', color='green')
+    # 전체 그래프는 초록색으로
+    plt.plot(df['TIME'], df['SALES'], marker='o', color='green', label='Sales Over Time')
 
     # 최고점을 빨간색 별표로 표시
     max_index = df['SALES'].idxmax()
-    plt.scatter(df['TIME'][max_index], df['SALES'][max_index], color='red', marker='*')
+    plt.scatter(df['TIME'][max_index], df['SALES'][max_index], color='red', marker='*', s=100, label='Maximum Sales')
 
     # 최저점을 파란색으로 표시
     min_index = df['SALES'].idxmin()
-    plt.scatter(df['TIME'][min_index], df['SALES'][min_index], color='blue')
+    plt.scatter(df['TIME'][min_index], df['SALES'][min_index], color='blue', s=100, label='Minimum Sales')
+
     plt.title('Daily Sales Data')
     plt.xlabel('Time')
     plt.ylabel('Total Sales')
     plt.grid(True)
-    plt.xticks(rotation=45)  # x축 라벨 회전
+    plt.xticks(rotation=45)
+    plt.legend()
     plt.tight_layout()
     st.pyplot(plt)
 
