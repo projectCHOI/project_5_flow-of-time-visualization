@@ -19,6 +19,7 @@ def plot_sales(df):
     plt.figure(figsize=(10, 5))
     # 전체 그래프는 초록색으로
     plt.plot(df['TIME'], df['SALES'], marker='o', color='green', label='Sales Over Time')
+# 위에 전체 초록 적용이 문제가 된다.
 
     # 최고점을 빨간색 별표로 표시
     max_index = df['SALES'].idxmax()
