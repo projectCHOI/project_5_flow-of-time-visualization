@@ -12,6 +12,8 @@
 3. 가설 검정(Hypothesis Testing)
 -특정 가설을 설정하고 데이터를 사용하여 이 가설을 지지하거나 반박할 수 있는 증거 탐색.
 
+# 파일 경로나 파일명에 공백이나 특수 문자가 포함되어, 경로를 따옴표로 감싸야한다.
+streamlit run "경~로"
 
 @ Streamlit-hourly sales
 # streamlit run "c:/Users/HOME/Desktop/새싹_교육/GitHub_CHOI/project_5_flow-of-time-visualization/자료실/Streamlit-hourly sales.py"
