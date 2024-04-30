@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 import pandas as pd
 
 def get_news(url):
@@ -16,7 +15,6 @@ def get_news(url):
         date = soup.select_one("div.media_end_head_info_datestamp span")["data-date-time"].split(" ")[0]
         media = soup.select_one("a.media_end_head_top_logo img")["title"]
         content = soup.select_one('div#newsct_article')
-
     except:
         try:
             # 연예 뉴스
@@ -24,7 +22,6 @@ def get_news(url):
             date = soup.select_one('span.author em').text
             media = soup.select_one('div.press_logo img')['alt']
             content = soup.select_one('div#articeBody')
-
         except:
             # 스포츠 뉴스
             try:
@@ -32,7 +29,6 @@ def get_news(url):
                 date = soup.select_one('div.info span').text.split(' ')[1:]
                 media = soup.select_one('span.logo img')['alt']
                 content = soup.select_one('div#newsEndContents')
-
             except:
                 print(url)
 
@@ -48,7 +44,6 @@ def get_news_list(keyword, start_date, end_date):
         page = 1
         while True:
             strdate = str_date.replace(".", "")
-
             start = (page - 1) * 10 + 1
 
             headers = {"Cookie": "NNB=OURWEDJJKXKGI; nx_ssl=2; _naver_usersession_=+VdPHYAMq5W53YOSu5ttbQ==; page_uid=ieZzndprvmsssdTDFjRssssssah-332673"}
@@ -60,7 +55,6 @@ def get_news_list(keyword, start_date, end_date):
                 break
 
             print("page: ", page)
-
             page += 1
 
             for li in soup.select("ul.list_news li"):
@@ -71,9 +65,9 @@ def get_news_list(keyword, start_date, end_date):
 
     st_d = start_date.replace('.', '_')
     e_d = end_date.split('.')[-1]
-
-    News.to_csv(f"{st_d}" + "_" + f'{e_d}' + '.csv', mode="w")
+    file_name = f"{st_d}_{e_d}.csv"
+    News.to_csv(file_name, mode="w", encoding='utf-8-sig')
 
     return News
 
-print(get_news_list("마카롱", "2016.01.01", "2016.12.31"))
+print(get_news_list("마카롱", "2017.01.01", "2017.12.31"))
