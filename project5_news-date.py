@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from tqdm import tqdm
 
 def get_news(url):
     headers = {
@@ -36,10 +37,10 @@ def get_news(url):
 
 def get_news_list(keyword, start_date, end_date):
     news = []
+    dates = pd.date_range(start_date, end_date)
 
-    for date in pd.date_range(start_date, end_date):
+    for date in tqdm(dates, desc="Processing dates"):
         str_date = date.strftime("%Y.%m.%d")
-        print("date: ", str_date)
 
         page = 1
         while True:
@@ -54,15 +55,15 @@ def get_news_list(keyword, start_date, end_date):
             if soup.select_one("div.not_found02") is not None:
                 break
 
-            print("page: ", page)
             page += 1
 
-            for li in soup.select("ul.list_news li"):
+            for li in tqdm(soup.select("ul.list_news li"), desc=f"Scraping date: {str_date}, Page: {page}"):
                 if len(li.select("div.info_group a")) > 1:
                     news.append(get_news(li.select("div.info_group a")[-1]["href"]))
 
     News = pd.DataFrame(news, columns=["제목", "날짜", "매체명", "본문", "URL"])
 
+    # CSV
     st_d = start_date.replace('.', '_')
     e_d = end_date.split('.')[-1]
     file_name = f"{st_d}_{e_d}.csv"
@@ -70,4 +71,4 @@ def get_news_list(keyword, start_date, end_date):
 
     return News
 
-print(get_news_list("마카롱", "2017.01.01", "2017.12.31"))
+print(get_news_list("마카롱", "2018.01.01", "2018.12.31"))
