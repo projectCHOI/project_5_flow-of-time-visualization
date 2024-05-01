@@ -30,10 +30,19 @@ def get_news(url):
                 date = soup.select_one('div.info span').text.split(' ')[1:]
                 media = soup.select_one('span.logo img')['alt']
                 content = soup.select_one('div#newsEndContents')
+##예외 처리
             except:
-                print(url)
+                # 처리 실패시 로깅
+                print("Failed to process URL:", url)
+                return None  # 실패 처리를 위해 None 반환
+
+    # 모든 시도 후에도 정보가 없으면 None을 반환
+    if not all([title, date, media, content]):
+        print("Incomplete data extracted from URL:", url)
+        return None
 
     return (title, date, media, content, url)
+##예외 처리
 
 def get_news_list(keyword, start_date, end_date):
     news = []
