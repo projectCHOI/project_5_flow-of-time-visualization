@@ -1,3 +1,4 @@
+# csv 데이터  단순 표시 및 꺽은선 그래프 Streamlit에 표시
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
